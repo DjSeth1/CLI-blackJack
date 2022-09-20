@@ -1,3 +1,4 @@
+import random
 
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
@@ -35,6 +36,49 @@ class Deck:
         for suit in suits:
             for rank in ranks:
                 self.deck.append(Card(suit, rank, values))
+    
+    def __str__(self):
+        deck_combination = ''
+        for card in self.deck:
+            deck_combination += '\n' + card.__str__()
+        return 'The deck has: ' +  deck_combination
+    
+    def shuffle(self):
+        random.shuffle(self.deck)
+    
+    def deal(self):
+        single_card = self.deck.pop()
+        return single_card
+
+
+class Hand:
+    def __init__(self):
+        self.cards = []
+        self.value = 0
+        self. aces = 0
+    
+    def add_card(self, card):
+        self.cards.append(card)
+        self.value += values[card.rank]
+        if card.rank == 'Ace':
+            self.aces += 1
+    
+    def ace_adjustment(self):
+        while self.value > 21 and self.aces >= 1:
+            self.value -= 10
+            self.aces -= 1
+    
+    
+class Chips:
+
+    def __init__(self,)
+
+
+
+
+
+
+
               
 
     
