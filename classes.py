@@ -79,7 +79,7 @@ class Hand:
     
     
 class Chips:
-    """Chips Class"""
+    """Chips Class that stores and calculates bets won and lost"""
 
     def __init__(self):
         self.total = 100
