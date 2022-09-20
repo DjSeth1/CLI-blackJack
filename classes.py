@@ -27,6 +27,15 @@ class Card:
         print('|       |')
         print(f'|    {self.values:>2} |')
         print('└───────┘') 
+    
+    def hidden_card(self):
+        print('┌───────┐')
+        print('|       |')
+        print('|       |')
+        print('|       |')
+        print('|       |')
+        print('|       |')
+        print('└───────┘') 
 
 
 class Deck:
@@ -70,8 +79,18 @@ class Hand:
     
     
 class Chips:
+    """Chips Class"""
 
-    def __init__(self,)
+    def __init__(self):
+        self.total = 100
+        self.bet = 0 
+    
+    def win_bet(self):
+        self.total += (self.bet * 2)
+    
+    def lose_bet(self):
+        self.total -= self.bet
+
 
 
 
