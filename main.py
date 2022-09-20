@@ -40,7 +40,7 @@ def show_some(player, dealer):
 def show_all(player, dealer):
     print("\n Dealers Hand:", dealer.cards.show_card(self), sep= '\n')
     print("\n Dealers Value = ", dealer.value)
-    print("\n PLayer's Hand ", players.cards.show_card(self), sep= '\n')
+    print("\n PLayer's Hand ", player.cards.show_card(self), sep= '\n')
     print("Player's Hand", player.value)
 
 
@@ -56,6 +56,15 @@ def player_wins(player, dealer, chips):
 def player_wins(player, dealer, chips):
     print("PLAYER HAS WON!")
     chips.win_bet()
+
+def dealer_wins(player, dealer, chips):
+    print("DEALER HAS WON!")
+    chips.lose_bet()
+
+def push(player, dealer):
+    print('Push! Dealer and Player have tied.')
+
+
 
 
 
