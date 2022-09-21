@@ -67,19 +67,14 @@ class Hand:
             self.value -= 10
             self.aces -= 1
     
-    def show_card(self, curr_cards):
-        
-        print(self)
-
-        # print(card.values)
-        # print(card.suit_symbol)
-        # print( '┌───────┐')
-        # print(f'| {card.values:<2}    |')
-        # print( '|       |')
-        # print(f'|   {card.suit_symbol}   |')
-        # print( '|       |')
-        # print(f'|    {card.values:>2} |')
-        # print( '└───────┘') 
+    def show_card(self, suit_symbol, values):
+        print( '┌───────┐')
+        print(f'| {card.values:<2}    |')
+        print( '|       |')
+        print(f'|   {card.suit_symbol}   |')
+        print( '|       |')
+        print(f'|    {card.values:>2} |')
+        print( '└───────┘') 
     
     def hidden_card(self):
         print('┌───────┐')
@@ -105,7 +100,28 @@ class Chips:
         self.total -= self.bet
 
 
+class Bank:
+    '''Takes deposits and withdrawals for players'''
 
+    def __init__(self):
+        self.balance = 0
+    
+    def deposit(self):
+        amount = float(input('Enter an amount to be deposited: '))
+        self.balance += amount
+        print(f'\n The amount deposited: {amount}')
+
+    def withdraw(self):
+        amount = float(input('Enter an amount to be withdrawn: '))
+        if self.balance >= amount:
+            self.balance = amount
+            print(f'You withdrew: {amount}')
+        else:
+            print('\n Insufficient funds to withdraw')
+    
+    def display(self):
+        print(f'\n This is your available balance: {self.balance}')
+        
 
 
               

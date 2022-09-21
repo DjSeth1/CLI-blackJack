@@ -1,6 +1,10 @@
-from classes import Chips, Card, Deck, Hand
+from classes import Chips, Card, Deck, Hand, Bank
+
 
 playing = True
+
+        
+
 
 def take_bet(chips): #Ask for users bet
 
@@ -10,6 +14,8 @@ def take_bet(chips): #Ask for users bet
         except ValueError:
             print('Sorry, only integers are allowed, please enter a number instead')
         else:
+            if chips.bet > chips.deposit:
+                print('Sorry, your bet has to be within your deposit amount')
             if chips.bet > chips.total:
                 print('You can only bet less than your total amount!')
             else:
@@ -79,6 +85,8 @@ while True:
     print('===============================')
     print('Welcome to Blackjack!')
 
+    balance = deposit()
+
     #create and shuffle the deck
     deck = Deck()
     deck.shuffle()
@@ -129,6 +137,10 @@ while True:
 
         if player_hand.value > 21:
             player_busts(player_hand, dealer_hand, player_chips)
+        
+        if player_hand.aces > 1 and player_hand.value > 10:
+            player_wins(player_hand, dealer_hand, player_chips)
+
 
     print("\nPlayer's winnings stand at", player_chips.total)
 
