@@ -1,5 +1,7 @@
 from classes import Chips, Card, Deck, Hand
 
+playing = True
+
 def take_bet(chips): #Ask for users bet
 
     while True:
@@ -18,29 +20,33 @@ def hit(deck, hand):
     hand.ace_adjustment()
 
 def hit_stand(deck, hand):
-    global playing
 
     while True:
         user_input = input('Ooh, you want to hit or stand? Enter H for hit and S for stand: ')
 
         if user_input.lower() == 'h':
             hit(deck, hand)
+
         elif user_input.lower() == 's':
             print('Player stands, Dealer is playing...')
-            playing = False
+            playing = True
+
         else:
             print('Sorry, that please enter H or S only')
+            continue
+        break
 
 def show_some(player, dealer):
     print("\n Dealer's Hand: ")
-    print(hidden_card())
-    print("", dealer.cards[1].show_card())
-    print("\nPlayer's Hand: ", player.cards[1].show_card(), sep= '\n')
+    print("", dealer.cards[1])
+    
+    print("\nPlayer's Hand: ", player.cards[1], sep= '\n')
+    player.show_card(player, *player.cards)
 
 def show_all(player, dealer):
-    print("\n Dealers Hand:", dealer.cards.show_card(self), sep= '\n')
+    print("\n Dealers Hand:", dealer.cards.show_card(), sep= '\n')
     print("\n Dealers Value = ", dealer.value)
-    print("\n PLayer's Hand ", player.cards.show_card(self), sep= '\n')
+    print("\n PLayer's Hand ", player.cards.show_card(), sep= '\n')
     print("Player's Hand", player.value)
 
 
@@ -94,14 +100,16 @@ while True:
     #show cards
     show_some(player_hand, dealer_hand)
 
+    
     while playing:
 
         hit_stand(deck, player_hand)
+        
         show_some(player_hand, dealer_hand)
 
         if player_hand.value > 21:
             player_busts(player_hand, dealer_hand, player_chips)
-            break
+        break
 
     if player_hand.value <= 21:
 
