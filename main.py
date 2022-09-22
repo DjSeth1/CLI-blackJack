@@ -73,34 +73,17 @@ def play_again(player):
                     continue
 
 
-#game ending functions
-def player_busts(player, dealer, chips):
-    print("PLAYER HAS BUSTED!")
-    chips.lose_bet()
-
-def player_wins(player, dealer, chips):
-    print("PLAYER HAS WON!")
-    chips.win_bet()
-
-def dealer_busts(player, dealer, chips):
-    print("DEALER HAS BUSTED!")
-    chips.win_bet()
-
-def dealer_wins(player, dealer, chips):
-    print("DEALER HAS WON!")
-    chips.lose_bet()
-
-def push(player, dealer):
-    print('Push! Dealer and Player have tied.')
-
-
 
 
 # Gameplay
 
+print('Welcome to Blackjack!')
+
 new_player = Player()
 
 Playing = True
+
+
 
 while Playing:
     take_bet(new_player)
@@ -132,10 +115,9 @@ while Playing:
     else:
         show_some(dealer_hand, player_hand)
         while player_hand.value <= 21:
-            x = hit_or_stand(new_deck,player_hand)
             show_some(dealer_hand, player_hand)
-            player_hand.adjust_for_ace()
-            if x == 'S':
+            player_hand.ace_adjustment()
+            if user_input== 'S':
                 print('\nPLAYER STANDS')
                 while dealer_hand.value < 18:
                     dealer_hand.add_card(new_deck.deal())

@@ -50,7 +50,7 @@ class Hand:
 
     def add_card(self, card):
         self.cards.append(card)
-        self.values += card.value
+        self.values += card.__init__.value
         if card.rank == 'Ace':
             self.aces += 1
     
@@ -86,7 +86,7 @@ class Player:
     def __init__(self):
         self.bet = 0
         self.name = input('Please enter your name: ')
-        self.balance = input('Choose a deposit amount between 1 - 1000: ')
+        self.balance = int(input('Choose a deposit amount: '))
         print(f'Hi {self.name}, you have {self.balance} as a deposit')
     
     def win_bet(self):
