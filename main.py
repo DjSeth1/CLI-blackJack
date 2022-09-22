@@ -1,5 +1,6 @@
 from classes import Deck, Hand, Player
 
+import time
 
 
 
@@ -20,35 +21,60 @@ def hit(deck, hand):
     hand.add_card(deck.deal())
     hand.ace_adjustment()
 
-def hit_stand(deck, hand):
+def hit_stand(deck, hand, Playing):
 
     while True:
-        user_input = input('Ooh, you want to hit or stand? Enter H for hit and S for stand: ')
+        user_input = input('Ooh, you want to hit or stand? Enter H or hit and S for stand: ')
+        print(user_input)
 
         if user_input.lower() == 'h':
+            print("HIT")
+            time.sleep(1)
             hit(deck, hand)
+            hand.show_card(hand.cards[-1])
+            
         elif user_input.lower() == 's':
+            print("STAND")
+            time.sleep(1)
             print('Player stands, Dealer is playing...')
-            playing = True
+            return 's'
+            
         else:
             print('Sorry, that please enter H or S only')
-            continue
+
         break
 
-def show_some(player, dealer):
+        
+
+def show_some(dealer_hand, player_hand):
     print("\n Dealer's Hand: ")
-    print("", dealer.cards[1])
+    print("", dealer_hand.cards[1])
+    if len(dealer_hand.cards)<3:
 
+        dealer_hand.show_card(dealer_hand.cards[1])
+        dealer_hand.hidden_card()
+
+    else:
+        for card in dealer_hand.cards:
+            dealer_hand.show_card(card)
     
-    print("\nPlayer's Hand: ", player.cards[1], sep= '\n')
-    player.show_card(player, *player.cards)
-    print(f"Your total value: {player.value}")
+    print("\nPlayer's Hand: ")
+    for card in player_hand.cards:
+        print("", card)
+        print(player_hand.show_card(card))
+    print(f"Your total value: {player_hand.values}")
 
-def show_all(player, dealer):
-    print("\n Dealers Hand:", dealer.cards.show_card(), sep= '\n')
-    print("\n Dealers Value = ", dealer.value)
-    print("\n PLayer's Hand ", player.cards.show_card(), sep= '\n')
-    print("Player's Hand", player.value)
+def show_all(dealer_hand, player_hand):
+    print("\n Dealers Hand:", sep= '\n')
+    for card in dealer_hand.cards:
+        time.sleep(0.5)
+        dealer_hand.show_card(card)
+    print("\n Dealers Value = ", dealer_hand.values)
+    print("\n PLayer's Hand ", sep= '\n')
+    for card in player_hand.cards:
+        time.sleep(0.5)
+        player_hand.show_card(card)
+    print("Player's Hand", player_hand.values)
 
 
 def play_again(player):
@@ -65,6 +91,7 @@ def play_again(player):
             else:
                 if user_input == 'N':
                     Playing = False
+                    print("This is your cashout amount", player.balance)
                     print('Thanks for playing!')
                     break
                 elif user_input == 'Y':
@@ -99,47 +126,65 @@ while Playing:
     dealer_hand.add_card(new_deck.deal())
 
 
-    if player_hand.value == 21 and dealer_hand.value != 21:
+    if player_hand.values == 21 and dealer_hand.values != 21:
         show_all(dealer_hand,player_hand)
         print('BLACKJACK !!!')
         new_player.win_bet()
         play_again(new_player)
-    elif player_hand.value == 21 and dealer_hand.value == 21:
+
+
+    elif player_hand.values == 21 and dealer_hand.values == 21:
         show_all(dealer_hand,player_hand)
         print('BOTH BLACKJACK !!! PUSH !!!')
         new_player.push()
         play_again(new_player)
-    elif player_hand.value != 21 and dealer_hand.value == 21:
+
+
+    elif player_hand.values != 21 and dealer_hand.values == 21:
         show_all(dealer_hand,player_hand)
         print('DEALER BLACKJACK !!!')
         new_player.lose_bet()
         play_again(new_player)
+
+
     else:
         show_some(dealer_hand, player_hand)
-        while player_hand.value <= 21:
+
+
+        while player_hand.values <= 21:
             show_some(dealer_hand, player_hand)
             player_hand.ace_adjustment()
-            if hit_stand(deck, hand) == 's':
+
+
+            if hit_stand(deck, player_hand, Playing) == 's':
                 print('\nPLAYER STANDS')
-                while dealer_hand.value < 18:
+                while dealer_hand.values < 18:
                     dealer_hand.add_card(new_deck.deal())
                 show_all(dealer_hand, player_hand)
-                if dealer_hand.value > 21:
+
+
+                if dealer_hand.values > 21:
                     print('DEALER BUST')
                     new_player.win_bet()
                     play_again(new_player)
                     break
-                elif dealer_hand.value > player_hand.value:
+
+
+                elif dealer_hand.values > player_hand.values:
                     print('DEALER WINS')
                     new_player.lose_bet()
                     play_again(new_player)
                     break
-                elif dealer_hand.value < player_hand.value:
+
+
+                elif dealer_hand.values < player_hand.values:
                     print('PLAYER WINS')
                     new_player.win_bet()
                     play_again(new_player)
                     break
-                elif dealer_hand.value == player_hand.value:
+
+
+                elif dealer_hand.values == player_hand.values:
                     new_player.push()
                     play_again(new_player)
                     break

@@ -2,6 +2,9 @@ import random
 
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
+values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten': 10, 'Jack': 10, 'Queen': 10, 'King': 10, 'Ace': 11} 
+suit_symbols = {'Hearts': '♥', 'Diamonds':'♦', 'Spades': '♠', 'Clubs': '♣'}
+ranks_symbols = {'Two': '2', 'Three':'3', 'Four': '4', 'Five': '5', 'Six' :'6', 'Seven': '7', 'Eight': '8', 'Nine':'9', 'Ten':'10', 'Jack':'J', 'Queen':'Q', 'King':'K', 'Ace':'A'}
 
 
 
@@ -10,8 +13,9 @@ class Card:
     def __init__(self, suit, rank):
         self.suit = suit
         self.rank = rank
-        self.value = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten': 10, 'Jack': 10, 'Queen': 10, 'King': 10, 'Ace': 11}
-
+        self.symbol = suit_symbols[suit]
+        self.value = values[rank]
+        self.rank_symbol = ranks_symbols[rank]
 
        
 
@@ -60,23 +64,24 @@ class Hand:
             self.values -= 10
             self.aces -= 1
     
-    # def show_card(self, card_values, card_symbols):
-    #     print( '┌───────┐')
-    #     print(f'| {self.card_values:<2}    |')
-    #     print( '|       |')
-    #     print(f'|   {self.card_symbols}   |')
-    #     print( '|       |')
-    #     print(f'|    {self.card_values:>2} |')
-    #     print( '└───────┘') 
-    
-    # def hidden_card(self):
-    #     print('┌───────┐')
-    #     print('|       |')
-    #     print('|       |')
-    #     print('|       |')
-    #     print('|       |')
-    #     print('|       |')
-    #     print('└───────┘') 
+    def show_card(self, card):
+        print( '┌───────┐')
+        print(f'| {card.rank_symbol:<2}    |')
+        print( '|       |')
+        print(f'|   {card.symbol}   |')
+        print( '|       |')
+        print(f'|    {card.rank_symbol:>2} |')
+        print( '└───────┘') 
+
+
+    def hidden_card(self):
+        print('┌───────┐')
+        print('|       |')
+        print('|       |')
+        print('|       |') 
+        print('|       |')
+        print('|       |')
+        print('└───────┘') 
     
 
 
