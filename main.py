@@ -1,4 +1,4 @@
-from classes import Card, Deck, Hand, Player
+from classes import Deck, Hand, Player
 
 
 
@@ -65,6 +65,7 @@ def play_again(player):
             else:
                 if user_input == 'N':
                     Playing = False
+                    print('Thanks for playing!')
                     break
                 elif user_input == 'Y':
                     Playing = True
@@ -80,7 +81,8 @@ def play_again(player):
 print('Welcome to Blackjack!')
 
 new_player = Player()
-
+deck = Deck()
+hand = Hand()
 Playing = True
 
 
@@ -117,7 +119,7 @@ while Playing:
         while player_hand.value <= 21:
             show_some(dealer_hand, player_hand)
             player_hand.ace_adjustment()
-            if user_input== 'S':
+            if hit_stand(deck, hand) == 's':
                 print('\nPLAYER STANDS')
                 while dealer_hand.value < 18:
                     dealer_hand.add_card(new_deck.deal())
