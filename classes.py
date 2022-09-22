@@ -7,13 +7,12 @@ values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eig
 
 
 class Card:
-    def __init__(self, suit, rank, values):
+    def __init__(self, suit, rank, value):
         self.suit = suit
         self.rank = rank
-        self.value = values
-        self.suit_symbol = ['♥','♦','♣','♠']
-        self.values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'] 
+        self.value = value
 
+       
 
     def __str__(self):
         return self.rank + ' of ' + self.suit
@@ -32,96 +31,75 @@ class Deck:
         deck_combination = ''
         for card in self.deck:
             deck_combination += '\n' + card.__str__()
-        return 'The deck has: ' +  deck_combination
+        return deck_combination
     
     def shuffle(self):
         random.shuffle(self.deck)
     
     def deal(self):
-        single_card = self.deck.pop()
-        return single_card
+        new_card = self.deck.pop()
+        return new_card
 
 
 class Hand:
     def __init__(self):
         self.cards = []
-        self.card_values = []
-        self.card_symbols = []
-
-        self.value = 0
+        self.values = 0
         self.aces = 0
          
 
-    
     def add_card(self, card):
         self.cards.append(card)
-        self.card_values.append(card.value)
-        self.card_symbols.append(card.suit_symbol)
-
-        self.value += values[card.rank]
+        self.values += card.value
         if card.rank == 'Ace':
             self.aces += 1
     
     def ace_adjustment(self):
-        while self.value > 21 and self.aces >= 1:
-            self.value -= 10
+        while self.values > 21 and self.aces:
+            self.values -= 10
             self.aces -= 1
     
-    def show_card(self, suit_symbol, values):
-        print( '┌───────┐')
-        print(f'| {card.values:<2}    |')
-        print( '|       |')
-        print(f'|   {card.suit_symbol}   |')
-        print( '|       |')
-        print(f'|    {card.values:>2} |')
-        print( '└───────┘') 
+    # def show_card(self, card_values, card_symbols):
+    #     print( '┌───────┐')
+    #     print(f'| {self.card_values:<2}    |')
+    #     print( '|       |')
+    #     print(f'|   {self.card_symbols}   |')
+    #     print( '|       |')
+    #     print(f'|    {self.card_values:>2} |')
+    #     print( '└───────┘') 
     
-    def hidden_card(self):
-        print('┌───────┐')
-        print('|       |')
-        print('|       |')
-        print('|       |')
-        print('|       |')
-        print('|       |')
-        print('└───────┘') 
+    # def hidden_card(self):
+    #     print('┌───────┐')
+    #     print('|       |')
+    #     print('|       |')
+    #     print('|       |')
+    #     print('|       |')
+    #     print('|       |')
+    #     print('└───────┘') 
     
-    
-class Chips:
-    """Chips Class that stores and calculates bets won and lost"""
 
+
+        
+
+class Player:
+    '''Takes a players name and stores their balance''' 
     def __init__(self):
-        self.total = 100
-        self.bet = 0 
+        self.bet = 0
+        self.name = input('Please enter your name: ')
+        self.balance = input('Choose a deposit amount between 1 - 1000: ')
+        print(f'Hi {self.name}, you have {self.balance} as a deposit')
     
     def win_bet(self):
-        self.total += (self.bet * 2)
+        self.balance += (self.bet * 2)
+        print(f"Your balance is {self.balance}")
     
     def lose_bet(self):
-        self.total -= self.bet
-
-
-class Bank:
-    '''Takes deposits and withdrawals for players'''
-
-    def __init__(self):
-        self.balance = 0
+        self.balance -= self.bet
+        print(f"Your balance is {self.balance}")
     
-    def deposit(self):
-        amount = float(input('Enter an amount to be deposited: '))
-        self.balance += amount
-        print(f'\n The amount deposited: {amount}')
+    def push(self):
+        print(f"Your balance is {self.balance}")
 
-    def withdraw(self):
-        amount = float(input('Enter an amount to be withdrawn: '))
-        if self.balance >= amount:
-            self.balance = amount
-            print(f'You withdrew: {amount}')
-        else:
-            print('\n Insufficient funds to withdraw')
-    
-    def display(self):
-        print(f'\n This is your available balance: {self.balance}')
-        
 
 
               
