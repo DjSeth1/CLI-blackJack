@@ -92,16 +92,24 @@ class Hand:
         print('|       |')
         print('└───────┘') 
     
-
-
         
 
 class Player:
-    '''Takes a players name and stores their balance and used to check if the player can keep playing''' 
+    '''Takes a players name and stores their balance and used to check if the player can keep playing'''
     def __init__(self):
         self.bet = 0
         self.name = input('Please enter your name: ')
-        self.balance = int(input('Choose a deposit amount: '))
+        while True:
+            try:
+                 self.balance = int(input('Choose a deposit amount between 1 and 1000: '))
+            except TypeError:
+                print('Please enter an integer as deposit amount')
+            except ValueError:
+                print('Please enter an integer as deposit amount')
+            else:
+                break
+
+            
         print(f'Hi {self.name}, you have {self.balance} as a deposit')
     
     def win_bet(self):

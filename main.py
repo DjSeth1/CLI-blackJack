@@ -1,6 +1,7 @@
 from classes import Deck, Hand, Player
 
 import time
+import clearing
 
 
 
@@ -133,7 +134,9 @@ def play_again(player):
             try:
                 user_input = input('Play again? (Y/N): ').upper()
             except TypeError:
-                print('Please enter either Y or N only')
+                print('Please enter a string of either Y or N only')
+            except ValueError:
+                print('PLease enter Y or N only')
                 continue
             else:
                 if user_input == 'N':
@@ -151,6 +154,8 @@ def play_again(player):
 
 
 # Gameplay
+
+clearing.clear()
 
 print('Welcome to Blackjack!')
 
@@ -214,6 +219,7 @@ while Playing:
                     print('DEALER BUST')
                     new_player.win_bet()
                     play_again(new_player)
+                    clearing.clear()
                     break
 
 
@@ -221,6 +227,7 @@ while Playing:
                     print('DEALER WINS')
                     new_player.lose_bet()
                     play_again(new_player)
+                    clearing.clear()
                     break
 
 
@@ -228,6 +235,7 @@ while Playing:
                     print('PLAYER WINS')
                     new_player.win_bet()
                     play_again(new_player)
+                    
                     break
 
 
@@ -235,11 +243,13 @@ while Playing:
                     print('IT IS A PUSH!')
                     new_player.push()
                     play_again(new_player)
+                    clearing.clear()
                     break
         else:
             print('BUST')
             new_player.lose_bet()
             play_again(new_player)
+            clearing.clear()
 
 
 
