@@ -21,7 +21,7 @@ def hit(deck, hand):
     hand.add_card(deck.deal())
     hand.ace_adjustment()
 
-def hit_stand(deck, hand, Playing):
+def hit_stand(deck, hand):
 
     while True:
         user_input = input('Ooh, you want to hit or stand? Enter H or hit and S for stand: ')
@@ -31,14 +31,12 @@ def hit_stand(deck, hand, Playing):
             print("HIT")
             time.sleep(1)
             hit(deck, hand)
-            hand.show_card(hand.cards[-1])
-            
+            hand.show_card(hand.cards[-1])    
         elif user_input.lower() == 's':
             print("STAND")
             time.sleep(1)
             print('Player stands, Dealer is playing...')
-            return 's'
-            
+            return 's' 
         else:
             print('Sorry, that please enter H or S only')
 
@@ -49,7 +47,7 @@ def hit_stand(deck, hand, Playing):
 def show_some(dealer_hand, player_hand):
     print("\n Dealer's Hand: ")
     print("", dealer_hand.cards[1])
-    if len(dealer_hand.cards)<3:
+    if len(dealer_hand.cards)<10:
 
         dealer_hand.show_card(dealer_hand.cards[1])
         dealer_hand.hidden_card()
@@ -87,6 +85,7 @@ def play_again(player):
             try:
                 user_input = input('Play again? (Y/N): ').upper()
             except TypeError:
+                print('Please enter either Y or N only')
                 continue
             else:
                 if user_input == 'N':
@@ -156,7 +155,7 @@ while Playing:
             player_hand.ace_adjustment()
 
 
-            if hit_stand(deck, player_hand, Playing) == 's':
+            if hit_stand(deck, player_hand) == 's':
                 print('\nPLAYER STANDS')
                 while dealer_hand.values < 18:
                     dealer_hand.add_card(new_deck.deal())
@@ -185,6 +184,7 @@ while Playing:
 
 
                 elif dealer_hand.values == player_hand.values:
+                    print('IT IS A PUSH!')
                     new_player.push()
                     play_again(new_player)
                     break
