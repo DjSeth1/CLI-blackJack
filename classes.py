@@ -41,9 +41,11 @@ class Deck:
         return deck_combination
     
     def shuffle(self):
+        '''shuffles the deck and returns a list of cards'''
         random.shuffle(self.deck)
     
     def deal(self):
+        '''deals the last card from a shuffled deck'''
         new_card = self.deck.pop()
         return new_card
 
@@ -57,17 +59,20 @@ class Hand:
          
 
     def add_card(self, card):
+        '''adds card from dealt card into player or dealer hands and checks for ace'''
         self.cards.append(card)
         self.values += card.value
         if card.rank == 'Ace':
             self.aces += 1
     
     def ace_adjustment(self):
+        '''checks for ace and lowers value of ace from 11 to 1 when hand values exceed 21'''
         while self.values > 21 and self.aces:
             self.values -= 10
             self.aces -= 1
     
     def show_card(self, card):
+        ''' Displays card with a card of corresponding symbols and ranks'''
         print( '┌───────┐')
         print(f'| {card.rank_symbol:<2}    |')
         print( '|       |')
@@ -78,6 +83,7 @@ class Hand:
 
 
     def hidden_card(self):
+        ''' displays hidden card for show_some for dealer'''
         print('┌───────┐')
         print('|       |')
         print('|       |')
@@ -99,14 +105,17 @@ class Player:
         print(f'Hi {self.name}, you have {self.balance} as a deposit')
     
     def win_bet(self):
+        '''takes in the bet amount and returns it to the balance by adding it, and returns balance to user'''
         self.balance += (self.bet * 2)
         print(f"Your balance is {self.balance}")
     
     def lose_bet(self):
+        '''takes in bet amount and subtracts from balance and returns balance to user'''
         self.balance -= self.bet
         print(f"Your balance is {self.balance}")
     
     def push(self):
+        '''push means tie so it leaves the balance as it is and returns the balance to the user'''
         print(f"Your balance is {self.balance}")
 
 
