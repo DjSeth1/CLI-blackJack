@@ -5,7 +5,12 @@ import time
 
 
 def take_bet(player): #Ask for users bet
+    '''Asks user for a bet amount
+        Args: player
 
+        Returns:
+        An input corresponding to the bet amount    
+    '''
     while True:
         try:
             player.bet = int(input('Place your bets: '))
@@ -18,33 +23,57 @@ def take_bet(player): #Ask for users bet
                 break
 
 def hit(deck, hand):
+    ''' takes a card from a deck and gives it to the player hand or dealer hand upon asking for a hit using the add card function from class hand and ace-adjustment to calculate ace value based on hand value
+
+    args: deck and hand
+
+    returns
+    a card from the deck to player or dealer
+
+    '''
     hand.add_card(deck.deal())
     hand.ace_adjustment()
 
 def hit_stand(deck, hand):
+    ''' allows user to input whether or not they want to hit or stand proceeding into the next round
+    
+    args: deck and hand
+
+    returns: if hit, adds a new card to the players hand using add_card function
+    if stand, dealers turn comes on and it adds cards to the dealer until dealer stands
+    '''
 
     while True:
         user_input = input('Ooh, you want to hit or stand? Enter H or hit and S for stand: ')
         print(user_input)
 
-        if user_input.lower() == 'h':
-            print("HIT")
-            time.sleep(1)
-            hit(deck, hand)
-            hand.show_card(hand.cards[-1])    
-        elif user_input.lower() == 's':
-            print("STAND")
-            time.sleep(1)
-            print('Player stands, Dealer is playing...')
-            return 's' 
+        try:
+            if user_input.lower() == 'h':
+                print("HIT")
+                time.sleep(1)
+                hit(deck, hand)
+                hand.show_card(hand.cards[-1])    
+            elif user_input.lower() == 's':
+                print("STAND")
+                time.sleep(1)
+                print('Player stands, Dealer is playing...')
+                return 's' 
+        except ValueError:
+            print('Sorry, that cannot be taken please enter H or S only')
         else:
-            print('Sorry, that please enter H or S only')
-
-        break
+            break
+       
 
         
 
 def show_some(dealer_hand, player_hand):
+    ''' active until player stands, shows the cards in player and dealers hands
+    
+    args: dealer_hand and player_hand
+
+    returns: 
+    cards in dealer and player hands with ASCII art aswell as text display of cards
+    '''
     print("\n Dealer's Hand: ")
     print("", dealer_hand.cards[1])
     if len(dealer_hand.cards)<10:
@@ -63,6 +92,13 @@ def show_some(dealer_hand, player_hand):
     print(f"Your total value: {player_hand.values}")
 
 def show_all(dealer_hand, player_hand):
+    ''' active when player has stood, and displays all cards in hand of players and dealers
+    
+    args: dealer_hand and player_hand
+
+    returns: cards in dealer and players hands aswell as text of each card and the total value of the hand.
+
+    '''
     print("\n Dealers Hand:", sep= '\n')
     for card in dealer_hand.cards:
         time.sleep(0.5)
@@ -76,6 +112,18 @@ def show_all(dealer_hand, player_hand):
 
 
 def play_again(player):
+    '''Prompts user to play again depending on whether or not they have enough cash deposited to play
+    
+    args: player
+
+    returns:
+    if player does not have enough cash it exits the game
+    if player has enough cash:
+    if player wants to play, it starts a new game with and prompts a bet amount
+
+    else player does not want to play it exits and allows users to cash out their winnings.
+
+    '''
     global Playing
     if player.balance == 0:
         print('You have no more money! Thank you for playing!')

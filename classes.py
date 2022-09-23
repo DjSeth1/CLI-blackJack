@@ -11,6 +11,7 @@ ranks_symbols = {'Two': '2', 'Three':'3', 'Four': '4', 'Five': '5', 'Six' :'6', 
 
 
 class Card:
+    ''' Creates a card object from a list of cards'''
     def __init__(self, suit, rank):
         self.suit = suit
         self.rank = rank
@@ -48,6 +49,7 @@ class Deck:
 
 
 class Hand:
+    ''' Shows a hand generated from the deck that has been dealt. Works for dealer and player cards'''
     def __init__(self):
         self.cards = []
         self.values = 0
@@ -89,7 +91,7 @@ class Hand:
         
 
 class Player:
-    '''Takes a players name and stores their balance''' 
+    '''Takes a players name and stores their balance and used to check if the player can keep playing''' 
     def __init__(self):
         self.bet = 0
         self.name = input('Please enter your name: ')
