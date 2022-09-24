@@ -65,7 +65,7 @@ class Hand:
          
 
     def add_card(self, card):
-        '''adds card from dealt card into player or dealer hands and checks for ace'''
+        '''adds card from dealt card into player or dealer hands and checks for ace and adds the hands total value'''
         self.cards.append(card)
         self.values += card.value
         if card.rank == 'Ace':

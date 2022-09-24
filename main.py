@@ -5,7 +5,7 @@ import clearing
 
 
 
-def take_bet(player): #Ask for users bet
+def take_bet(player): 
     '''Asks user for a bet amount
         Args: player
 
@@ -158,19 +158,20 @@ def play_again(player):
 
 # Gameplay
 
+
 clearing.clear()
 
-print('Welcome to Blackjack!')
+print('Welcome to Blackjack!'.center(60))
 print('''
 
-                                                                  
+                                                                
 ,-----.  ,--.              ,--.        ,--.              ,--.     
 |  |) /_ |  | ,--,--. ,---.|  |,-.     |  | ,--,--. ,---.|  |,-.  
 |  .-.  \|  |' ,-.  || .--'|     /,--. |  |' ,-.  || .--'|     /  
 |  '--' /|  |\ '-'  |\ `--.|  \  \|  '-'  /\ '-'  |\ `--.|  \  \  
 `------' `--' `--`--' `---'`--'`--'`-----'  `--`--' `---'`--'`--' 
-                                                                  
-''')
+                                                                
+'''.center(100))
 
 new_player = Player()
 deck = Deck()
@@ -229,28 +230,28 @@ while Playing:
 
 
                 if dealer_hand.values > 21:
-                    print('DEALER BUST')
+                    print('\nDEALER BUST')
                     new_player.win_bet()
                     play_again(new_player)
                     break
 
 
                 elif dealer_hand.values > player_hand.values:
-                    print('DEALER WINS')
+                    print('\nDEALER WINS')
                     new_player.lose_bet()
                     play_again(new_player)
                     break
 
 
                 elif dealer_hand.values < player_hand.values:
-                    print('PLAYER WINS')
+                    print('\nPLAYER WINS')
                     new_player.win_bet()
                     play_again(new_player)
                     break
 
 
                 elif dealer_hand.values == player_hand.values:
-                    print('IT IS A PUSH!')
+                    print('\nIT IS A PUSH!')
                     new_player.push()
                     play_again(new_player)
                     break
@@ -258,6 +259,7 @@ while Playing:
             print('BUST')
             new_player.lose_bet()
             play_again(new_player)
+
 
 
 
