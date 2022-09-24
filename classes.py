@@ -38,13 +38,15 @@ class Deck:
         self.deck = []
         for suit in suits:
             for rank in ranks:
-                self.deck.append(Card(suit, rank))
+                (self.deck.append(Card(suit, rank)))
+
     
     def __str__(self):
         deck_combination = ''
         for card in self.deck:
             deck_combination += '\n' + card.__str__()
         return deck_combination
+       
     
     def shuffle(self):
         '''shuffles the deck and returns a list of cards'''
