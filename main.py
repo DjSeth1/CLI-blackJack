@@ -19,7 +19,7 @@ def take_bet(player): #Ask for users bet
             print('Sorry, only integers are allowed, please enter a number instead')
         else:
             if  player.bet > player.balance:
-                print('You can only bet less than your total amount!')
+                print(f'You can only bet less than your total amount of {player.balance}')
             else:
                 break
 
@@ -48,22 +48,20 @@ def hit_stand(deck, hand):
         user_input = input('Ooh, you want to hit or stand? Enter H or hit and S for stand: ')
         print(user_input)
 
-        try:
-            if user_input.lower() == 'h':
-                print("HIT")
-                time.sleep(1)
-                hit(deck, hand)
-                hand.show_card(hand.cards[-1])    
-            elif user_input.lower() == 's':
-                print("STAND")
-                time.sleep(1)
-                print('Player stands, Dealer is playing...')
-                return 's' 
-        except ValueError:
-            print('Sorry, that cannot be taken please enter H or S only')
-        else:
-            break
-       
+        if not ((user_input.lower() == "h") or (user_input.lower() == "s")):
+            print('Please enter H or S only')
+            continue
+
+        if user_input.lower() == 'h':
+            print("HIT")
+            time.sleep(1)
+            hit(deck, hand)
+            hand.show_card(hand.cards[-1])    
+        elif user_input.lower() == 's':
+            print("STAND")
+            time.sleep(1)
+            print('Player stands, Dealer is playing...')
+            return 's'
 
         
 
@@ -75,21 +73,25 @@ def show_some(dealer_hand, player_hand):
     returns: 
     cards in dealer and player hands with ASCII art aswell as text display of cards
     '''
-    print("\n Dealer's Hand: ")
+    print("\n ============ Dealer's Hand: ============ ")
     print("", dealer_hand.cards[1])
     if len(dealer_hand.cards)<10:
-
+        time.sleep(0.5)
         dealer_hand.show_card(dealer_hand.cards[1])
+        time.sleep(0.5)
         dealer_hand.hidden_card()
 
     else:
         for card in dealer_hand.cards:
+            time.sleep(0.5)
+            print(card)
             dealer_hand.show_card(card)
     
-    print("\nPlayer's Hand: ")
+    print("\n ============ Player's Hand: ============")
     for card in player_hand.cards:
-        print("", card)
-        print(player_hand.show_card(card))
+        time.sleep(0.5)
+        print(card)
+        player_hand.show_card(card)
     print(f"Your total value: {player_hand.values}")
 
 def show_all(dealer_hand, player_hand):
@@ -100,16 +102,18 @@ def show_all(dealer_hand, player_hand):
     returns: cards in dealer and players hands aswell as text of each card and the total value of the hand.
 
     '''
-    print("\n Dealers Hand:", sep= '\n')
+    print("\n ============ Dealers Hand: ============", sep= '\n')
     for card in dealer_hand.cards:
         time.sleep(0.5)
+        print(card)
         dealer_hand.show_card(card)
     print("\n Dealers Value = ", dealer_hand.values)
-    print("\n PLayer's Hand ", sep= '\n')
+    print("\n  ============ Player's Hand: ============ ", sep= '\n')
     for card in player_hand.cards:
         time.sleep(0.5)
+        print(card)
         player_hand.show_card(card)
-    print("Player's Hand", player_hand.values)
+    print("Player's Value", player_hand.values)
 
 
 def play_again(player):
@@ -131,21 +135,20 @@ def play_again(player):
         Playing = False
     else:
         while True:
-            try:
-                user_input = input('Play again? (Y/N): ').upper()
-            except TypeError:
-                print('Please enter a string of either Y or N only')
-            except ValueError:
-                print('PLease enter Y or N only')
+            user_input = input('Play again? (Y/N): ').upper()
+            if not ((user_input == 'Y') or (user_input == 'N')):
+                print('Please enter Y or N only')
                 continue
             else:
                 if user_input == 'N':
                     Playing = False
+                    clearing.clear()
                     print("This is your cashout amount", player.balance)
                     print('Thanks for playing!')
                     break
                 elif user_input == 'Y':
                     Playing = True
+                    clearing.clear()
                     break
                 else:
                     continue
@@ -158,6 +161,16 @@ def play_again(player):
 clearing.clear()
 
 print('Welcome to Blackjack!')
+print('''
+
+                                                                  
+,-----.  ,--.              ,--.        ,--.              ,--.     
+|  |) /_ |  | ,--,--. ,---.|  |,-.     |  | ,--,--. ,---.|  |,-.  
+|  .-.  \|  |' ,-.  || .--'|     /,--. |  |' ,-.  || .--'|     /  
+|  '--' /|  |\ '-'  |\ `--.|  \  \|  '-'  /\ '-'  |\ `--.|  \  \  
+`------' `--' `--`--' `---'`--'`--'`-----'  `--`--' `---'`--'`--' 
+                                                                  
+''')
 
 new_player = Player()
 deck = Deck()
@@ -219,7 +232,6 @@ while Playing:
                     print('DEALER BUST')
                     new_player.win_bet()
                     play_again(new_player)
-                    clearing.clear()
                     break
 
 
@@ -227,7 +239,6 @@ while Playing:
                     print('DEALER WINS')
                     new_player.lose_bet()
                     play_again(new_player)
-                    clearing.clear()
                     break
 
 
@@ -235,7 +246,6 @@ while Playing:
                     print('PLAYER WINS')
                     new_player.win_bet()
                     play_again(new_player)
-                    
                     break
 
 
@@ -243,13 +253,12 @@ while Playing:
                     print('IT IS A PUSH!')
                     new_player.push()
                     play_again(new_player)
-                    clearing.clear()
                     break
         else:
             print('BUST')
             new_player.lose_bet()
             play_again(new_player)
-            clearing.clear()
+
 
 
 

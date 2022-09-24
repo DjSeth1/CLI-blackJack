@@ -1,10 +1,16 @@
 import random
 
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
-ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
-values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten': 10, 'Jack': 10, 'Queen': 10, 'King': 10, 'Ace': 11} 
+ranks = (
+    'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace'
+    )
+values = {
+    'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten': 10, 'Jack': 10, 'Queen': 10, 'King': 10, 'Ace': 11
+    } 
 suit_symbols = {'Hearts': '♥', 'Diamonds':'♦', 'Spades': '♠', 'Clubs': '♣'}
-ranks_symbols = {'Two': '2', 'Three':'3', 'Four': '4', 'Five': '5', 'Six' :'6', 'Seven': '7', 'Eight': '8', 'Nine':'9', 'Ten':'10', 'Jack':'J', 'Queen':'Q', 'King':'K', 'Ace':'A'}
+ranks_symbols = {
+    'Two': '2', 'Three':'3', 'Four': '4', 'Five': '5', 'Six' :'6', 'Seven': '7', 'Eight': '8', 'Nine':'9', 'Ten':'10', 'Jack':'J', 'Queen':'Q', 'King':'K', 'Ace':'A'
+    }
 
 
 
@@ -102,24 +108,27 @@ class Player:
         while True:
             try:
                  self.balance = int(input('Choose a deposit amount between 1 and 1000: '))
-            except TypeError:
+                 if self.balance<1 or self.balance>1000:
+                    print("Invalid amount. Please enter a deposit amount between 1 and 1000")
+                    continue
+            except (TypeError, ValueError):
                 print('Please enter an integer as deposit amount')
-            except ValueError:
-                print('Please enter an integer as deposit amount')
+              
             else:
                 break
 
-            
         print(f'Hi {self.name}, you have {self.balance} as a deposit')
     
     def win_bet(self):
         '''takes in the bet amount and returns it to the balance by adding it, and returns balance to user'''
         self.balance += (self.bet * 2)
+        print(f"You won {self.bet * 2}")
         print(f"Your balance is {self.balance}")
     
     def lose_bet(self):
         '''takes in bet amount and subtracts from balance and returns balance to user'''
         self.balance -= self.bet
+        print(f"You lost {self.bet}")
         print(f"Your balance is {self.balance}")
     
     def push(self):
