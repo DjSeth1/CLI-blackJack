@@ -180,6 +180,7 @@ hand = Hand()
 Playing = True
 
 
+
 while Playing:
     take_bet(new_player)
     new_deck = Deck()
@@ -215,6 +216,7 @@ while Playing:
 
     else:
         
+
 
         while player_hand.values <= 21:
             show_some(dealer_hand, player_hand)
