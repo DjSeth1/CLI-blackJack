@@ -45,11 +45,57 @@ Users can utilise the **hit** function to draw another single card to add to the
 
 The stand feature works similarly to the hit, but with this case, the game ends the player’s turn and the dealers logic starts. The dealer will play till they either beat the players hand, bust or lose if they have an initial value of more than 18.
 
+## Implementation - [Trello Board](https://trello.com/b/eQB7s03k/kanban-template)
+
+Firstly, this will show the main features outlined above, and how they were implemented using a checklist of subtasks. Then display the day to day operations of the Kanban board while creating this project. 
+
+### Betting Functionality Feature
+
+As outlined below, this was a high priority and big feature of this game. Actual implementation of it relative to other tasks was considered medium. 
+
+There is a checklist of the steps taken to implement this user story, along with the time it would take it finish the sub tasks. (Currently unchecked for readability)
+
+![bettting-function-Kanban](docs/Betting-Functionality-Kanban.png)
+
+### GUI Display of Cards Feature
+
+
+As outlined below, this was a high priority and big feature of this game. Actual implementation of it relative to other tasks was considered large, and took more time to implement than expected. 
+
+There is a checklist of the steps taken to implement this user story, along with the time it would take it finish the sub tasks. (Currently unchecked for readability)
+
+![gui-display-kanban](docs/GUI-Kanban.png)
+
+
+### Hit or Stand Feature
+
+As outlined below, this was a high priority and big feature of this game. Actual implementation of it relative to other tasks was considered medium.
+
+There is a checklist of the steps taken to implement this user story, along with the time it would take it finish the sub tasks. (Currently unchecked for readability)
+
+![hit-stand-kanban](docs/Hit-Stand-Kanban.png)
+
+
+### Day by Day Implementation of Kanban Board
+
+This was used to track the tasks that needed to be completed, on a day to day there was shuffling of the cards, sometimes into the code-review stage, then right back into the to-do stage for a different approach. This board proved very useful to making sure that the project was running smoothly. 
+
+![kanban-start-image](docs/Kanban-start.png)
+![kanban-image-2](docs/Kanban-2.png)
+![kanban-image-3](docs/Kanban-3.png)
+![kanban-image-4](docs/Kanban-4.png)
+![kanban-image-5](docs/Kanban-5.png)
+![kanban-image-6](docs/Kanban-6.png)
+![kanban-image-7](docs/Kanban-7.png)
+![kanban-image-end](docs/Kanban-end.png)
 
 
 ## Testing
 
 For this project, manual testing is deployed for each of the main features.
+
+![test-1-image](docs/testing-1.png)
+![test-2-image](docs/testing-2.png)
 
 
 ## Help Documentation
