@@ -10,6 +10,23 @@
 - The round ends at the result of many defined outcomes, and then the user is prompted to play again given they have enough balance.
 
 
+## Visual Aspects of How the Game is Played
+
+The game starts and the user is prompted to input their name:
+![welcome-image](docs/Welcome-Screen.png)
+
+Then the user is prompted to input their bets:
+![take-bet-image](docs/Place-Bets.png)
+
+After this, the round begins and cards are dealt, the GUI displays the cards, as well as their values:
+![round-played-image](docs/Round-played.png)
+
+The user can choose to hit or stand and control the flow of their game from here on out. 
+![hit-or-stand-image](docs/Hit-stand-prompt.png)
+
+After the round finishes, user can choose to play or not play again depending on their balance amount.
+![play-again-image](docs/Play-again-prompt.png)
+
 ## Features
 
 All the features outlined have a vast variety of conditionals, loops and variable scopes that work together to create a seamless and fun user experience.While this game encompasses a vast variety of features which are outlined in other deliverables of this project, the three I will outline in this document are as follows. 
@@ -47,4 +64,3 @@ For this project, manual testing is deployed for each of the main features.
 5. From here we can run blackjack by executing the shell script by entering the command
     
     `./main.sh`
-    
