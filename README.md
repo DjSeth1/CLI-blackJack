@@ -1,6 +1,7 @@
 # Welcome to BlackJack
 
 ### [Github Repo](https://github.com/DjSeth1/DivijSeth_T1A3)
+### [Source Control Repo](https://github.com/DjSeth1/DivijSeth_T1A3/commits/main)
 ### [Presentation]()
 
 ## Statement of Purpose and Scope
@@ -51,7 +52,7 @@ It's a card game, so the user can expect to see some cards being displayed. The 
 
 ### Hit or Stand Feature
 
-Users can utilise the **hit** function to draw another single card to add to their hand. When the user enters the letter "h." The cards are added up to determine the player's overall hand worth. The user may also see the player's hand to determine what to do next. The hit function operates within a while loop that maintains track of the overall card hand value of the user. As long as the user's total card hand value does not exceed 21, the user is constantly prompted if they want to hit (take another card).
+Users can utilise the **hit** function to draw another single card to add to their hand. When the user enters the letter "h." The cards are added up to determine the player's overall hand worth. The user may also see the player's hand to determine what to do next. The hit function operates within a while loop of playing that maintains track of the overall card hand value of the user. As long as the user's total card hand value does not exceed 21, the user is constantly prompted if they want to hit (take another card).
 
 The stand feature works similarly to the hit, but with this case, the game ends the player’s turn and the dealers logic starts. The dealer will play till they either beat the players hand, bust or lose if they have an initial value of more than 18.
 
@@ -126,9 +127,12 @@ For this project, manual testing is deployed for each of the main features.
 ## References
 
 The style guide adhered to strictly has been PEP 8.
+Rules obtained for logic also outlined below.
 
 PyPI. 2022. clearing. [online] Available at: https://pypi.org/project/clearing/ [Accessed 21 September 2022].
 
 Rossum, G., 2022. PEP 8 – Style Guide for Python Code | peps.python.org. [online] Peps.python.org. Available at: https://peps.python.org/pep-0008/ [Accessed 21 September 2022].
+
+Encyclopedia of Casino Twenty-One, Michael Dalton, 2016, (1993), ISBN 1-879712-02-4
 
 
