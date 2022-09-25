@@ -2,7 +2,7 @@
 
 ### [Github Repo](https://github.com/DjSeth1/DivijSeth_T1A3)
 ### [Source Control Repo](https://github.com/DjSeth1/DivijSeth_T1A3/commits/main)
-### [Presentation]()
+### [Presentation](https://vimeo.com/753491368)
 
 ## Statement of Purpose and Scope
 This is a terminal implementation of the beloved game of Blackjack. It follows a similar variation from what is played at Casinos far and wide. This implementation encompasses the full scope of the concepts learned so far in Python, and is reflective of the skills attained.
