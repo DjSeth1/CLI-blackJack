@@ -27,3 +27,9 @@ It's a card game, so the user can expect to see some cards being displayed. The 
 Users can utilise the **hit** function to draw another single card to add to their hand. When the user enters the letter "h." The cards are added up to determine the player's overall hand worth. The user may also see the player's hand to determine what to do next. The hit function operates within a while loop that maintains track of the overall card hand value of the user. As long as the user's total card hand value does not exceed 21, the user is constantly prompted if they want to hit (take another card).
 
 The stand feature works similarly to the hit, but with this case, the game ends the player’s turn and the dealers logic starts. The dealer will play till they either beat the players hand, bust or lose if they have an initial value of more than 18.
+
+
+
+## Testing
+
+For this project, manual testing is deployed for each of the main features.
