@@ -1,7 +1,7 @@
-from classes import Deck, Hand, Player
-
 import time
 import clearing
+from classes import Deck, Hand, Player
+
 
 
 
