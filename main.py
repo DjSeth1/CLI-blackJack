@@ -80,6 +80,7 @@ def show_some(dealer_hand, player_hand):
         dealer_hand.show_card(dealer_hand.cards[1])
         time.sleep(0.5)
         dealer_hand.hidden_card()
+        print()
 
     else:
         for card in dealer_hand.cards:
@@ -179,7 +180,6 @@ hand = Hand()
 Playing = True
 
 
-
 while Playing:
     take_bet(new_player)
     new_deck = Deck()
@@ -214,8 +214,7 @@ while Playing:
 
 
     else:
-        show_some(dealer_hand, player_hand)
-
+        
 
         while player_hand.values <= 21:
             show_some(dealer_hand, player_hand)
