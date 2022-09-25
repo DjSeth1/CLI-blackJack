@@ -1,5 +1,15 @@
 # Welcome to BlackJack
 
+### [Github Repo](https://github.com/DjSeth1/DivijSeth_T1A3)
+### [Presentation]()
+
+## Statement of Purpose and Scope
+This is a terminal implementation of the beloved game of Blackjack. It follows a similar variation from what is played at Casinos far and wide. This implementation encompasses the full scope of the concepts learned so far in Python, and is reflective of the skills attained.
+
+## Target Audience
+It is intended or people looking to play a game in the vintage setting of the command line, as well as all blackjack lovers, who seek the thrill of advancing their tactics against the dealer.
+
+
 ## How the Game Works
 - The game is coded to mimic a real blackjack game at a casino.
 - Winning Odds and losing odds all mimic the same as a casino.
@@ -110,3 +120,15 @@ For this project, manual testing is deployed for each of the main features.
 5. From here we can run blackjack by executing the shell script by entering the command
     
     `./main.sh`
+6. From here on out, the program will guide you on how to play. 
+
+
+## References
+
+The style guide adhered to strictly has been PEP 8.
+
+PyPI. 2022. clearing. [online] Available at: https://pypi.org/project/clearing/ [Accessed 21 September 2022].
+
+Rossum, G., 2022. PEP 8 – Style Guide for Python Code | peps.python.org. [online] Peps.python.org. Available at: https://peps.python.org/pep-0008/ [Accessed 21 September 2022].
+
+
